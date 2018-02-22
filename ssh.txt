@@ -1,0 +1,22 @@
+ls -al ~/.ssh
+
+#1.Generating a new SSH key
+ssh-keygen -t rsa -b 4096 -C "evelynwang16@gmail.com"
+##Enter a file in which to save the key
+/Users/pro/.ssh/id_rsa
+
+#2.Adding your SSH key to the ssh-agent
+vim ~/.ssh/config
+#3. modify your ~/.ssh/config
+Host *
+ AddKeysToAgent yes
+ UseKeychain yes
+ IdentityFile ~/.ssh/id_rsa
+
+ #4.Add your SSH private key to the ssh-agent and store your passphrase in the keychain. If you created your key with a different name, or if you are adding an existing key that has a different name, 
+ #replace id_rsa in the command with the name of your private key file.
+ ssh-add -K ~/.ssh/id_rsa
+
+#4.Adding a new SSH key to your GitHub account
+#4.1Copy the SSH key to your clipboard.
+pbcopy < ~/.ssh/id_rsa.pub
