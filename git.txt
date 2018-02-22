@@ -1,7 +1,8 @@
+https://www.cnblogs.com/wangmingshun/p/5424767.html
 git config --global user.name "jingwang134"
 git config --global user.email "evelynwang16@gmail.com"
 
-
+git clone
 git init CSstanford
 #Initialized empty Git repository in /Volumes/win/CS/unix/CSstanford/.git/
 cd CSstanford
@@ -10,10 +11,35 @@ git status
 git add ssh.txt
 git commit
 
-git remote add origin "https://github.com/jingwang134/CS.git"
-git push -u origin master
+git remote add origin "https://github.com/jingwang134/CS.git"#关联一个远程库
+git push -u origin master #第一次要用-u 以后不需要)
 git pull --rebase origin master
 
+git push origin master #name of remote:origin  brach:master
+git remote 查看远程库的信息
+git remote –v 查看远程库的详细信息
+git push origin master Git会把master分支推送到远程库对应的远程分支上
+
+#file
 git add -A  提交所有变化  
 git add -u  提交被修改(modified)和被删除(deleted)文件，不包括新文件(new)  
 git add .  提交新文件(new)和被修改(modified)文件，不包括被删除(deleted)文件 
+git rm XX 删除XX文件
+git stash list 查看所有被隐藏的文件列表
+git stash apply 恢复被隐藏的文件，但是内容不删除
+git stash drop 删除文件
+git stash pop 恢复文件的同时 也删除文件
+
+
+#branch
+git checkout –b dev #创建dev分支 并切换到dev分支上
+git branch #查看当前所有的分支
+git checkout master #切换回master分支
+git merge dev #在当前的分支上合并dev分支
+git branch –d dev #删除dev分支
+git branch name #创建分支
+
+
+git reflog 查看历史记录的版本号id
+git checkout — XX 把XX文件在工作区的修改全部撤销。
+git stash 把当前的工作隐藏起来 等以后恢复现场后继续工作
