@@ -1,0 +1,68 @@
+man dscl
+'''
+dscl -- Directory Service command line utility
+      -p           prompt for password
+                -u user      authenticate as user
+                -P password  authentication password
+                -f filepath  targeted local node database file path
+                -raw         don't strip off prefix from DirectoryService API constants
+                -plist       print out record(s) or attribute(s) in XML plist format
+                -url         print record attribute values in URL-style encoding
+                -q           quiet - no interactive prompt
+'''
+
+#create user
+sudo dscl . -create /Users/cs
+dscl . -create /Users/cs UniqueID UID
+dscl . -create /Users/cs UserShell /usr/zsh
+
+dscl . -create /Users/cs PrimaryGroupID GID
+dscl . -create /Users/cs Password cs123
+
+#添加user到group:
+sudo dscl . -append /Groups/admin GroupMembership cs  
+sudo dscl . -append /Groups/wheel GroupMembership cs
+#删除
+sudo dscl . -delete /Groups/admin GroupMembership java  
+
+#查看
+dscl . -list /Groups 组
+'''
+network
+nobody
+nogroup
+operator
+staff
+sys
+tty
+utmp
+wheel
+'''
+sudo dscl . -list /groups GroupMembership#显示所有users对应的group
+'''
+2                                     ub1 java pro
+_analyticsd                           _analyticsd
+_analyticsusers                       _analyticsd _networkd _timed
+_appserveradm                         pro ub1 java
+_appserverusr                         pro ub1 java
+admin                                 root pro ub1 java
+docker                                pro ub1 java
+kmem                                  root
+mail                                  _teamsserver
+operator                              root
+procmod                               root
+procview                              root
+staff                                 root
+sys                                   root
+tty                                   root
+wheel                                 root pro
+'''
+dscacheutil -q group 所有用户和组
+
+#用户权限
+root:
+uid=0(root) gid=0(wheel) groups=0(wheel),1(daemon),2(kmem),3(sys),4(tty),5(operator),8(procview),9(procmod),12(everyone),20(staff),29(certusers),61(localaccounts),80(admin),702(com.apple.sharepoint.group.2),33(_appstore),98(_lpadmin),100(_lpoperator),204(_developer),398(com.apple.access_screensharing),399(com.apple.access_ssh)
+抛去 uid 不说，你把你的用户放到 wheel 里面试试看，权限应该有大部分，但是还是达不到效果，
+#include <unistd.h>
+     uid_t
+     getuid(void);

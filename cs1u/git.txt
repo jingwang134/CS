@@ -4,7 +4,7 @@ git config --global user.email "evelynwang16@gmail.com"
 
 git clone
 git init CSstanford
-#Initialized empty Git repository in /Volumes/win/CS/unix/CSstanford/.git/
+#Initialized empty Git repository in /Volumes/win/CS/unix/CSstanford/.git/CSstanford
 cd CSstanford
 git status
 
