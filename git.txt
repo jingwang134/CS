@@ -1,0 +1,19 @@
+git config --global user.name "jingwang134"
+git config --global user.email "evelynwang16@gmail.com"
+
+
+git init CSstanford
+#Initialized empty Git repository in /Volumes/win/CS/unix/CSstanford/.git/
+cd CSstanford
+git status
+
+git add ssh.txt
+git commit
+
+git remote add origin "https://github.com/jingwang134/CS.git"
+git push -u origin master
+git pull --rebase origin master
+
+git add -A  提交所有变化  
+git add -u  提交被修改(modified)和被删除(deleted)文件，不包括新文件(new)  
+git add .  提交新文件(new)和被修改(modified)文件，不包括被删除(deleted)文件 
